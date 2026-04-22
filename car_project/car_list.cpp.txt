@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Car {
+    string brand;
+    string model;
+    int year;
+    int horsepower;
+};
+
+int findMostPowerful(Car cars[], int size) {
+    int maxIndex = 0;
+    for (int i = 1; i < size; i++) {
+        if (cars[i].horsepower > cars[maxIndex].horsepower)
+            maxIndex = i;
+    }
+    return maxIndex;
+}
+
+int main() {
+    Car cars[3] = {
+        {"Lada", "Vesta", 2021, 106},
+        {"BMW", "X5", 2019, 340},
+        {"Kia", "Rio", 2022, 123}
+    };
+
+    int idx = findMostPowerful(cars, 3);
+    cout << "Самый мощный автомобиль: "
+         << cars[idx].brand << " " << cars[idx].model
+         << " (" << cars[idx].horsepower << " HP)" << endl;
+    return 0;
+}
